@@ -1,5 +1,6 @@
 import express  from 'express';
 import bodyParser from 'body-parser';
+import passport from 'passport';
 import {connect} from './config/database.js';
 import HashtagRepository from './repository/hash-repo.js'
 import service from './services/repo-service.js';
@@ -18,14 +19,15 @@ app.listen(PORT,()=>{
 });
 
 connect();
+app.use(passport.initialize())
 
-const userRepo = new userRepository();
-const tweetRepo = new Repository();
+// const userRepo = new userRepository();
+// const tweetRepo = new Repository();
 
-const tweets = await tweetRepo.getAll(0,10);
-const users = await userRepo.getAll();
+// const tweets = await tweetRepo.getAll(0,10);
+// const users = await userRepo.getAll();
 
 
-const likeservice = new LikeService();
-await likeservice.toogleLike(tweets[0].id,'Tweet',users[0].id);
+// const likeservice = new LikeService();
+// await likeservice.toogleLike(tweets[0].id,'Tweet',users[0].id);
 

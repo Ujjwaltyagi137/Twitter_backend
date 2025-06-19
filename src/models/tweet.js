@@ -6,11 +6,26 @@ const schema = new mongoose.Schema({
         require: true,
         max : [200,'tweets cannot be more than 200 character']
     },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Like'
+        }
+    ],
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ],
     hashtags : [{
         type : mongoose.Schema.Types.ObjectId,
         type: String,
         ref : "hashtag"
-     }]
+     }],
+     image : {
+        type : String
+     }
 
 },{timestamps : true});
 
